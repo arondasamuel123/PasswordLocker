@@ -18,6 +18,11 @@ class TestPassLock(unittest.TestCase):
         self.assertEqual(self.new_client.email, "arondasamuel123@gmail.com")
         self.assertEqual(self.new_client.password, "darko@420")
 
+    def test_save_client(self):
+
+        self.new_client.save_client();
+        self.assertEqual(len(Client.u_list), 1)
+
 
 if __name__=='__main__':
     unittest.main()
