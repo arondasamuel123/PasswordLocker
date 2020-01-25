@@ -61,6 +61,9 @@ class TestAccountDetails(unittest.TestCase):
         Set Up with dummy instance object of Account Details 
         """
         self.new_acc = AccountDetails("Sydx10", "Snapchat", "syd123")
+    
+    def tearDown(self):
+        AccountDetails.details_list= []
 
     def test__init__(self):
         """
@@ -71,9 +74,26 @@ class TestAccountDetails(unittest.TestCase):
         self.assertEqual(self.new_acc.acc_password, "syd123")
     
     def test_save_acc(self):
-        
+        """
+        Created test to check if object of Account Details is being added to a list
+        """
         self.new_acc.save_acc()
         self.assertEqual(len(AccountDetails.details_list), 1)
+
+    def test_save_multiple_acc(self):
+        """
+        Created test to save save multiple account to the list in a clasS AccountDetails
+        """
+        self.new_acc.save_acc()
+        test_acc= AccountDetails("samuel123","Facebook", "samuel@123" )
+        test_acc.save_acc()
+
+        test_acc2 = AccountDetails("alvin.kyle", "Instagram", "kyle@abc")
+        test_acc2.save_acc()
+        self.assertEqual(len(AccountDetails.details_list), 3)
+
+
+
 
     
 
