@@ -1,5 +1,6 @@
 from client import Client
 from account_details import AccountDetails
+import strgen
 
 def create_client(fn, ln, email, password):
     """
@@ -18,9 +19,22 @@ def find_client(password):
     Function to login in user to the application
     """
     return Client.find_client(password)
+
 def create_acc(acc_username, platform_name, acc_password):
     new_account = AccountDetails(acc_username,platform_name,acc_password)
+    return new_account
 
+def save_account(account_details):
+    """
+    Save an account in the account details list
+    """
+    account_details.save_acc()
+
+def display_accounts():
+    """
+        Display all account credentials
+    """
+    return AccountDetails.display_accs()
 
 def main():
     while True:
@@ -58,9 +72,51 @@ def main():
             accesspass = input()
             if find_client(accesspass):
                 print(f"Welcome to your Password Vault {accessemail}. What would like to do?")
-                print("1.Add credentials 2. View credentials")
+                print("4.Add credentials 5.View credentials")
+                choice = int(input())
+
+                if choice == 4:
+                        print("Enter account username")
+                        acc_name = input()
+                        print("Enter Platform name")
+                        plat_name = input()
+                        print("6.Would like a generated password?  7.Would like to create your own password?")
+                        choice = int(input())
+
+                        if choice == 6:
+                                acc_pass = strgen.StringGenerator("[\d\w]{8}").render()
+                                print(f"Password: {acc_pass}")
+                        elif choice == 7:
+                                print("Enter password")
+                                acc_pass = input()
+                        else:
+                                print("Wrong choice")
+
+                        save_account(create_acc(acc_name,plat_name,acc_pass))
+                        print(f"Account Name: {acc_name} Platform Name: {plat_name} Account Password: {acc_pass}" )
+                        
+                # print(choice)
+
+                # if choice == 4:
+                #     print("Enter account username")
+                #     acc_name= input()
+                #     print("Enter Platform name")
+                #     plat_name= input()
+                #     print("6.Would like a generate password? 7. Would like to create your own passsword?")
+
+                # elif choice == 5:
+                #     acc_pass = strgen.StringGenerator("[\d\w]{8}").render()
+                #     print(f"Password: {acc_pass}")
+                # elif option == 7:
+                #     print("Enter account password")
+                #     acc_pass = input()
+                else:
+                    print("Invalid choice")
+
             else:
                 print("Invalid credentials")
+        else:
+            print("Incorrect choice")
 
         
 

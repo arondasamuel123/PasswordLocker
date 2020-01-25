@@ -38,7 +38,7 @@ class TestPassLock(unittest.TestCase):
         test_client = Client("Sydney", "Domingo", "sydx10@gmail.com", "123456")
         test_client.save_client()
         found_pass = Client.find_client("123456")
-        self.assertEqual(test_client.email,found_pass.email)
+        self.assertEqual(found_pass.email,test_client.email)
     
     def test_several_clients(self):
         '''
@@ -111,6 +111,19 @@ class TestAccountDetails(unittest.TestCase):
         Created test to display all account credentials for user
         """
         self.assertEqual(AccountDetails.display_accs(), AccountDetails.details_list)
+
+    def test_find_creds(self):
+        """
+        Created test to find a users credentials
+        """
+        self.new_acc.save_acc()
+        testacc4 = AccountDetails("peter123", "Gmail", "qwert123")
+        testacc4.save_acc()
+        
+        found_creds = AccountDetails.find_creds("peter123")
+        self.assertEqual(found_creds.acc_username,testacc4.acc_username)
+        
+
 
     
 
