@@ -8,6 +8,8 @@ class TestPassLock(unittest.TestCase):
         '''
         self.new_client = Client("Samuel", "Aronda", "arondasamuel123@gmail.com", "darko@420")
 
+    def tearDown(self):
+        Client.u_list=[]
     
     def test__init__(self):
         '''
@@ -19,9 +21,23 @@ class TestPassLock(unittest.TestCase):
         self.assertEqual(self.new_client.password, "darko@420")
 
     def test_save_client(self):
+        '''
+        Test to save client to list 
+        '''
 
-        self.new_client.save_client();
+        self.new_client.save_client()
         self.assertEqual(len(Client.u_list), 1)
+
+    def test_delete_client(self):
+        '''
+        Test carried to check if client has been deleted 
+        '''
+        self.new_client.save_client()
+        test_client = Client("Sydney", "Domingo", "sydx10@gmail.com", "12345")
+        test_client.save_client()
+        test_client.del_client()
+        self.assertEqual(len(Client.u_list), 1)
+
 
 
 if __name__=='__main__':

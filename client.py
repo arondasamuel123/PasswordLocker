@@ -15,3 +15,9 @@ class Client:
         Function to save client to list 
         """
         Client.u_list.append(self)
+    
+    def del_client(self):
+        """
+        Function to delete client from list 
+        """
+        Client.u_list.remove(self)
