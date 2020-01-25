@@ -28,15 +28,16 @@ class TestPassLock(unittest.TestCase):
         self.new_client.save_client()
         self.assertEqual(len(Client.u_list), 1)
 
-    def test_delete_client(self):
+    def test_find_client(self):
         '''
-        Test carried to check if client has been deleted 
+        Test to find user by  their password 
         '''
         self.new_client.save_client()
-        test_client = Client("Sydney", "Domingo", "sydx10@gmail.com", "12345")
+        test_client = Client("Sydney", "Domingo", "sydx10@gmail.com", "123456")
         test_client.save_client()
-        test_client.del_client()
-        self.assertEqual(len(Client.u_list), 1)
+        found_pass = Client.find_client("123456")
+        self.assertEqual(test_client.email,found_pass.email)
+
 
 
 

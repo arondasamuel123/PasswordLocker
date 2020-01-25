@@ -15,9 +15,19 @@ class Client:
         Function to save client to list 
         """
         Client.u_list.append(self)
+
+    @classmethod
+    def find_client(cls, password):
+        """
+        Function that takes in a password and the user 
+
+        Args:
+            password ro search for 
+        Returns :
+            Logins in user to application
+        """
+        for client in cls.u_list:
+            if client.password == password:
+                return client
+
     
-    def del_client(self):
-        """
-        Function to delete client from list 
-        """
-        Client.u_list.remove(self)
