@@ -63,6 +63,9 @@ class TestAccountDetails(unittest.TestCase):
         self.new_acc = AccountDetails("Sydx10", "Snapchat", "syd123")
     
     def tearDown(self):
+        """
+        
+        """
         AccountDetails.details_list= []
 
     def test__init__(self):
@@ -92,7 +95,24 @@ class TestAccountDetails(unittest.TestCase):
         test_acc2.save_acc()
         self.assertEqual(len(AccountDetails.details_list), 3)
 
+    def test_delete_acc(self):
+        """
+        Created test to delete account credentials 
+        """
+        self.new_acc.save_acc()
+        test_acc3 = AccountDetails("hannes", "Reddit", "yoda")
+        test_acc3.save_acc()
+        
+        test_acc3.delete_acc()
+        self.assertEqual(len(AccountDetails.details_list),1)
+    
+    def test_display_accs(self):
+        """
+        Created test to display all account credentials for user
+        """
+        self.assertEqual(AccountDetails.display_accs(), AccountDetails.details_list)
 
+    
 
 
     

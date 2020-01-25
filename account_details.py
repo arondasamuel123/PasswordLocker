@@ -15,4 +15,14 @@ class AccountDetails:
     def save_acc(self):
         AccountDetails.details_list.append(self)
 
+    def delete_acc(self):
+        AccountDetails.details_list.remove(self)
+
+    @classmethod
+    def display_accs(cls):
+
+        return cls.details_list
+
+
+
     
