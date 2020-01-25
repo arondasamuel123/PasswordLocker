@@ -26,9 +26,9 @@ class AccountDetails:
     @classmethod
     def find_creds(cls, acc_username):
         for accountdetails in cls.details_list:
-            if accountdetails.acc_username = acc_username
-            
-            return accountdetails
+            if accountdetails.acc_username == acc_username:
+
+                return accountdetails
 
 
     

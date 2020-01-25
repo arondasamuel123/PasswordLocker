@@ -36,6 +36,12 @@ def display_accounts():
     """
     return AccountDetails.display_accs()
 
+def find_creds(acc_username):
+    """
+    Finding account credentials 
+    """
+    return AccountDetails.find_creds(acc_username)
+
 def main():
     while True:
         print("Hello, This will be your personal Password Vault. What would like to do?")
@@ -94,22 +100,15 @@ def main():
 
                         save_account(create_acc(acc_name,plat_name,acc_pass))
                         print(f"Account Name: {acc_name} Platform Name: {plat_name} Account Password: {acc_pass}" )
-                        
-                # print(choice)
 
-                # if choice == 4:
-                #     print("Enter account username")
-                #     acc_name= input()
-                #     print("Enter Platform name")
-                #     plat_name= input()
-                #     print("6.Would like a generate password? 7. Would like to create your own passsword?")
+                if choice==5:
+                    print("Enter Account username")
+                    acc_username = input()
+                    if find_creds(acc_username):
+                        for client in display_accounts():
+                            print(f"Account Name:{client.acc_username}, Platform Name:{client.platform_name}, Account Password:{client.acc_password}")
 
-                # elif choice == 5:
-                #     acc_pass = strgen.StringGenerator("[\d\w]{8}").render()
-                #     print(f"Password: {acc_pass}")
-                # elif option == 7:
-                #     print("Enter account password")
-                #     acc_pass = input()
+
                 else:
                     print("Invalid choice")
 
