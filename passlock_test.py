@@ -1,5 +1,6 @@
 import unittest
 from client import Client
+from account_details import AccountDetails
 
 
 class TestPassLock(unittest.TestCase):
@@ -53,6 +54,28 @@ class TestPassLock(unittest.TestCase):
         self.assertEqual(len(Client.u_list), 3)
     
 
+class TestAccountDetails(unittest.TestCase):
+    
+    def setUp(self):
+        """
+        Set Up with dummy instance object of Account Details 
+        """
+        self.new_acc = AccountDetails("Sydx10", "Snapchat", "syd123")
+
+    def test__init__(self):
+        """
+        Created test to check if the object has actually been instansiated 
+        """
+        self.assertEqual(self.new_acc.acc_username,"Sydx10")
+        self.assertEqual(self.new_acc.platform_name, "Snapchat")
+        self.assertEqual(self.new_acc.acc_password, "syd123")
+    
+    def test_save_acc(self):
+        
+        self.new_acc.save_acc()
+        self.assertEqual(len(AccountDetails.details_list), 1)
+
+    
 
 
 
