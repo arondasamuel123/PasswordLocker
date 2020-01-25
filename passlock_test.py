@@ -1,6 +1,7 @@
 import unittest
 from client import Client
 
+
 class TestPassLock(unittest.TestCase):
     def setUp(self):
         '''
@@ -37,6 +38,21 @@ class TestPassLock(unittest.TestCase):
         test_client.save_client()
         found_pass = Client.find_client("123456")
         self.assertEqual(test_client.email,found_pass.email)
+    
+    def test_several_clients(self):
+        '''
+        Test to save more than one client 
+        '''
+        self.new_client.save_client()
+        test_client = Client("Alvin", "Kyle", "kyle@gmail.com", "abcdef")
+        test_client.save_client()
+
+        test_client2 = Client("Monica","Oyugi","oyugi@gmail.com", "123abc")
+        test_client2.save_client()
+
+        self.assertEqual(len(Client.u_list), 3)
+    
+
 
 
 
