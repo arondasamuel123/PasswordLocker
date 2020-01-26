@@ -84,7 +84,7 @@ def main():
             accesspass = input()
             if find_client(accesspass):
                 print(f"Welcome to your Password Vault {accessemail}. What would like to do?")
-                print("4.Add credentials 5.View credentials  0.Delete credentials")
+                print("4.Add credentials 5.View credentials  0.Delete credentials  9.Add existing credentials")
                 choice = int(input())
 
                 if choice == 4:
@@ -119,6 +119,17 @@ def main():
                     deleted = find_creds(creds_deleted)
                     del_creds(deleted)
                     print("Your credentials have been deleted")
+                
+                if choice== 9:
+                    print("Enter Account Username")
+                    cred_username = input()
+                    print("Enter Platform Name")
+                    cred_plat_name = input()
+                    print("Enter Account Password")
+                    cred_password = input()
+
+                    save_account(create_acc(cred_username,cred_plat_name,cred_password))
+                    print(f"Account Username: {cred_username} Platform Name: {cred_plat_name} Account Password:{cred_password}")
                 
 
 
