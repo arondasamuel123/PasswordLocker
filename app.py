@@ -41,6 +41,7 @@ def find_creds(acc_username):
     Finding account credentials 
     """
     return AccountDetails.find_creds(acc_username)
+
 def del_creds(account_details):
     """
     Delete credentials function 
@@ -83,7 +84,7 @@ def main():
             accesspass = input()
             if find_client(accesspass):
                 print(f"Welcome to your Password Vault {accessemail}. What would like to do?")
-                print("4.Add credentials 5.View credentials")
+                print("4.Add credentials 5.View credentials  0.Delete credentials")
                 choice = int(input())
 
                 if choice == 4:
@@ -112,6 +113,13 @@ def main():
                     if find_creds(acc_username):
                         for client in display_accounts():
                             print(f"Account Name:{client.acc_username}, Platform Name:{client.platform_name}, Account Password:{client.acc_password}")
+                if choice==0:
+                    print("Enter Account username")
+                    creds_deleted = input()
+                    deleted = find_creds(creds_deleted)
+                    del_creds(deleted)
+                    print("Your credentials have been deleted")
+                
 
 
                 else:
