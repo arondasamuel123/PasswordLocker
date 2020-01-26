@@ -41,6 +41,11 @@ def find_creds(acc_username):
     Finding account credentials 
     """
     return AccountDetails.find_creds(acc_username)
+def del_creds(account_details):
+    """
+    Delete credentials function 
+    """
+    return account_details.delete_acc()
 
 def main():
     while True:
