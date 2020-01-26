@@ -17,7 +17,7 @@ class Client:
         Client.u_list.append(self)
 
     @classmethod
-    def find_client(cls, password):
+    def find_client(cls, email, password):
         """
         Function that takes in a password and the user 
 

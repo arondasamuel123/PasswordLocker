@@ -14,11 +14,11 @@ def save_client(client):
     """
     client.save_client()
 
-def find_client(password):
+def find_client(email, password):
     """
     Function to login in user to the application
     """
-    return Client.find_client(password)
+    return Client.find_client(email,password)
 
 def create_acc(acc_username, platform_name, acc_password):
     new_account = AccountDetails(acc_username,platform_name,acc_password)
@@ -82,7 +82,7 @@ def main():
             accessemail = input()
             print("Enter Password")
             accesspass = input()
-            if find_client(accesspass):
+            if find_client(accessemail,accesspass):
                 print(f"Welcome to your Password Vault {accessemail}. What would like to do?")
                 print("4.Add credentials 5.View credentials  0.Delete credentials  9.Add existing credentials")
                 choice = int(input())

@@ -37,7 +37,7 @@ class TestPassLock(unittest.TestCase):
         self.new_client.save_client()
         test_client = Client("Sydney", "Domingo", "sydx10@gmail.com", "123456")
         test_client.save_client()
-        found_pass = Client.find_client("123456")
+        found_pass = Client.find_client("sydx10@gmail.com","123456")
         self.assertEqual(found_pass.email,test_client.email)
     
     def test_several_clients(self):
