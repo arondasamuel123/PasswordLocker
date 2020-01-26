@@ -107,20 +107,20 @@ def main():
                         save_account(create_acc(acc_name,plat_name,acc_pass))
                         print(f"Account Name: {acc_name} Platform Name: {plat_name} Account Password: {acc_pass}" )
 
-                if choice==5:
+                elif choice==5:
                     print("Enter Account username")
                     acc_username = input()
                     if find_creds(acc_username):
                         for client in display_accounts():
                             print(f"Account Name:{client.acc_username}, Platform Name:{client.platform_name}, Account Password:{client.acc_password}")
-                if choice==0:
+                elif choice==0:
                     print("Enter Account username")
                     creds_deleted = input()
                     deleted = find_creds(creds_deleted)
                     del_creds(deleted)
                     print("Your credentials have been deleted")
                 
-                if choice== 9:
+                elif choice== 9:
                     print("Enter Account Username")
                     cred_username = input()
                     print("Enter Platform Name")
