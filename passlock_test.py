@@ -122,6 +122,8 @@ class TestAccountDetails(unittest.TestCase):
         
         found_creds = AccountDetails.find_creds("peter123")
         self.assertEqual(found_creds.acc_username,testacc4.acc_username)
+
+    
         
 
 
